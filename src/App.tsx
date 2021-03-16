@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import Sample from './component/Sample';
+import SampleForm from './component/SampleForm';
+import { sampleFunction } from './utils/sampleFunction';
+
 
 function App() {
+  // ↓関数にカーソルを合わせると引数の型、戻り値の型が表示される。
+  // ctrl(command) + 左クリックで関数の定義してある場所まで飛べる
+  sampleFunction(1, 2);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>React + Typescriptで開発するメリット</h1>
+      <div className="flex">
+        {/* ↓必要なプロップスが渡されていない、または
+        プロップスに渡された値の型が間違っていると警告が出る 
+        引数「boolean」はオプショナル（必須項目ではない）に設定したので、定義しなくてもエラーは出ない
+        */}
+        <Sample 
+          number={1}
+          string={'サンプル'}
+        />
+        <SampleForm />
+      </div>
+    </>
   );
 }
 
